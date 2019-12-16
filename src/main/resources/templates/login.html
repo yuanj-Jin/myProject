@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+<!--    <link th:href="@{/static/css/chosen.min.css}" rel="stylesheet"/>-->
+    <script th:src="@{/static/js/jquery.js}"></script>
+    <script th:src="@{/static/js/jquery.js}" type="text/javascript" charset="utf-8"></script>
+    <title>登录</title>
+</head>
+<body>
+Welcome
+<br/>
+<input id="username" type="text"/>
+<input id="password" type="password" />
+<button id="login">Sign In</button>
+</body>
+</html>
+<script type="text/javascript">
+    $("#login").click(function () {
+        window.location.href="/signIn"
+    })
+</script>
