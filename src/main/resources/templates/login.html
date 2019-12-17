@@ -2,29 +2,74 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="utf-8"/>
-<!--    <link th:href="@{/static/css/chosen.min.css}" rel="stylesheet"/>-->
+    <!--    <link th:href="@{/static/css/chosen.min.css}" rel="stylesheet"/>-->
     <script th:src="@{/static/js/jquery.js}"></script>
     <script th:src="@{/static/js/jquery.js}" type="text/javascript" charset="utf-8"></script>
+    <script th:src="@{/static/js/vue.js}" type="text/javascript" charset="utf-8"></script>
     <title>登录</title>
-</head>
+    <style type="text/css">
+        /*//css代码*/
+        .header{
+            -webkit-animation:rotateImg 1s linear infinite;
+            width: 80px ;
+            height: 80px;
+            border: 1px solid #ccc;
+            vertical-align: middle;
+        }
+
+        @keyframes rotateImg {
+            0% {transform : rotate(0deg);}
+            100% {transform : rotate(360deg);}
+        }
+
+        @-webkit-keyframes rotateImg {
+            0%{-webkit-transform : rotate(0deg);}
+            100%{-webkit-transform : rotate(360deg);}
+        }
+
+
+    </style>
+    </head>
 <body>
 Welcome
 <br/>
 <input id="username" type="text"/>
-<input id="password" type="password" />
+<input id="password" type="password"/>
 <button id="login">Sign In</button>
 <script type="text/javascript">
-
-        </script>
+</script>
 <div th:text="${userName}" style="color: red"/>
 <div th:text="${passwd}" style="color: red"/>
+
+<div id="vue_det">
+    <h1>site : {{site}}</h1>
+    <h1>url : {{url}}</h1>
+    <h1>{{details()}}</h1>
+</div>
+<img class="header" th:src="@{/static/img/aa.png}">
+
 </body>
 </html>
 <script type="text/javascript">
     $("#login").click(function () {
-        var username=$("#username").val();
-        var password=$("#password").val();
-        window.location.href="/auth/signIn?userName="+username+"&passWord="+password
+        var username = $("#username").val();
+        var password = $("#password").val();
+        window.location.href = "/auth/signIn?userName=" + username + "&passWord=" + password
     })
     // alert([[${userName}]])
+    var vm = new Vue({
+        el: '#vue_det',
+        data: {
+            site: "菜鸟教程",
+            url: "www.runoob.com",
+            alexa: "10000"
+        },
+        methods: {
+            details: function() {
+                return  this.site + " - 学的不仅是技术，更是梦想！";
+            }
+        }
+    })
+
+
 </script>
