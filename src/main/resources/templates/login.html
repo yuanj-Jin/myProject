@@ -13,10 +13,18 @@ Welcome
 <input id="username" type="text"/>
 <input id="password" type="password" />
 <button id="login">Sign In</button>
+<script type="text/javascript">
+
+        </script>
+<div th:text="${userName}" style="color: red"/>
+<div th:text="${passwd}" style="color: red"/>
 </body>
 </html>
 <script type="text/javascript">
     $("#login").click(function () {
-        window.location.href="/signIn"
+        var username=$("#username").val();
+        var password=$("#password").val();
+        window.location.href="/auth/signIn?userName="+username+"&passWord="+password
     })
+    // alert([[${userName}]])
 </script>

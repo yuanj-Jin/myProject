@@ -1,4 +1,4 @@
-package com.envision.yuanj.service.impl;
+package com.envision.yuanj.service;
 
 import com.envision.yuanj.entity.User;
 

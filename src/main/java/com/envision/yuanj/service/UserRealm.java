@@ -1,7 +1,6 @@
 package com.envision.yuanj.service;
 
 import com.envision.yuanj.entity.User;
-import com.envision.yuanj.service.impl.UserService;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
@@ -17,7 +16,6 @@ public class UserRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
         Object obj = principal.getPrimaryPrincipal();
-        System.out.println(obj);
         return null;
     }
 
@@ -26,7 +24,7 @@ public class UserRealm extends AuthorizingRealm {
         UsernamePasswordToken userToken = (UsernamePasswordToken) authenticationToken;
         User authUser = userService.authticationUser(userToken.getUsername());
         if (authUser != null) {
-            return new SimpleAuthenticationInfo(authUser, "", "");
+            return new SimpleAuthenticationInfo(authUser, userToken.getCredentials(), userToken.getUsername());
         } else {
             return null;
         }

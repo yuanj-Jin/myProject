@@ -2,13 +2,14 @@ package com.envision.yuanj.service.impl;
 
 import com.envision.yuanj.dao.UserDao;
 import com.envision.yuanj.entity.User;
+import com.envision.yuanj.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
 
 @Service
-public class UserServiceImpl implements UserService{
+public class UserServiceImpl implements UserService {
     @Autowired
     UserDao userDao;
 
@@ -20,6 +21,5 @@ public class UserServiceImpl implements UserService{
         } else {
             return null;
         }
-        return null;
     }
 }

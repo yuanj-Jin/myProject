@@ -36,7 +36,7 @@ public class YuanjApplication {
         fMap.put("/**", "authc");
 
         // 开发阶段全部放行
-        // fMap.put("/**", "anon");
+         fMap.put("/**", "anon");
         fMap.put("/login/**", "anon");
         fMap.put("/elk/agent/regist", "anon");
         fMap.put("/elk/cpu/remote", "anon");
