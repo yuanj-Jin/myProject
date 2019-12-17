@@ -59,13 +59,21 @@
         /* ]]> */
 
         $(document).keydown(function (event) {
-            alert(event.keyCode);
             //判断当event.keyCode 为37时（即左方面键），执行函数to_left();
             //判断当event.keyCode 为39时（即右方面键），执行函数to_right();
             if (event.keyCode == 13) {
-                alert('回车键');
+                send()
             }
         });
+        // document.onkeydown = function(event) {
+        //         alert(event)
+        //     var e = event || window.event || arguments.callee.caller.arguments[0];
+        //
+        //     if (e && e.keyCode == 13) {
+        //
+        //     }
+        // };
+
     </script>
     <title>index</title>
 </head>
@@ -75,6 +83,12 @@ Welcome
 <input id="text" type="text"/>
 <button onclick="send()">Send</button>
 <button onclick="closeWebSocket()">Close</button>
+<button id="login">Sign In</button>
 <div id="message"></div>
 </body>
 </html>
+<script type="application/javascript">
+    $("#login").click(function () {
+        window.location.href="/auth/goLogin";
+    })
+</script>
