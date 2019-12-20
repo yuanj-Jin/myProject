@@ -8,25 +8,6 @@
     <script th:src="@{/static/js/vue.js}" type="text/javascript" charset="utf-8"></script>
     <title>登录</title>
     <style type="text/css">
-        /*//css代码*/
-        .header{
-            -webkit-animation:rotateImg 1s linear infinite;
-            width: 80px ;
-            height: 80px;
-            border: 1px solid #ccc;
-            vertical-align: middle;
-        }
-
-        @keyframes rotateImg {
-            0% {transform : rotate(0deg);}
-            100% {transform : rotate(360deg);}
-        }
-
-        @-webkit-keyframes rotateImg {
-            0%{-webkit-transform : rotate(0deg);}
-            100%{-webkit-transform : rotate(360deg);}
-        }
-
 
     </style>
     </head>
@@ -46,7 +27,6 @@ Welcome
     <h1>url : {{url}}</h1>
     <h1>{{details()}}</h1>
 </div>
-<img class="header" th:src="@{/static/img/aa.png}">
 
 </body>
 </html>
