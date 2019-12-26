@@ -1,8 +1,8 @@
-package com.envision.yuanj.service.impl;
+package com.envision.yuanj.service.sys.impl;
 
 import com.envision.yuanj.dao.UserDao;
 import com.envision.yuanj.entity.User;
-import com.envision.yuanj.service.UserService;
+import com.envision.yuanj.service.sys.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
