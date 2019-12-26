@@ -1,6 +1,6 @@
 package com.envision.yuanj.controller.sys;
 
-import com.envision.yuanj.service.UserService;
+import com.envision.yuanj.service.sys.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
 import org.apache.shiro.authc.UnknownAccountException;

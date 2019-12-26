@@ -1,6 +1,6 @@
 package com.envision.yuanj;
 
-import com.envision.yuanj.service.UserRealm;
+import com.envision.yuanj.service.sys.UserRealm;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.boot.SpringApplication;

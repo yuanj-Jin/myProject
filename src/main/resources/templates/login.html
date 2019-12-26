@@ -12,17 +12,15 @@
     </style>
     </head>
 <body>
+<div id="vue_det">
 Welcome
 <br/>
 <input id="username" type="text"/>
 <input id="password" type="password"/>
-<button id="login">Sign In</button>
-<script type="text/javascript">
-</script>
+<button id="login" @click="fnLogin()">Sign In</button>
+
 <div th:text="${userName}" style="color: red"/>
 <div th:text="${passwd}" style="color: red"/>
-
-<div id="vue_det">
     <h1>site : {{site}}</h1>
     <h1>url : {{url}}</h1>
     <h1>{{details()}}</h1>
@@ -31,12 +29,7 @@ Welcome
 </body>
 </html>
 <script type="text/javascript">
-    $("#login").click(function () {
-        var username = $("#username").val();
-        var password = $("#password").val();
-        window.location.href = "/auth/signIn?userName=" + username + "&passWord=" + password
-    })
-    // alert([[${userName}]])
+
     var vm = new Vue({
         el: '#vue_det',
         data: {
@@ -47,6 +40,11 @@ Welcome
         methods: {
             details: function() {
                 return  this.site + " - 学的不仅是技术，更是梦想！";
+            },
+            fnLogin:function () {
+                var username = $("#username").val();
+                var password = $("#password").val();
+                window.location.href = "/auth/signIn?userName=" + username + "&passWord=" + password
             }
         }
     })
