@@ -14,8 +14,8 @@ public class UserServiceImpl implements UserService {
     UserDao userDao;
 
     @Override
-    public User authticationUser(String userName) {
-        Optional<User> optional = userDao.findTopByUserNameAndStatus(userName, 1);
+    public User authticationUser(String userName,String passWord) {
+        Optional<User> optional = userDao.findTopByUserNameAndPassWord(userName, passWord);
         if (optional.isPresent()) {
             return optional.get();
         } else {

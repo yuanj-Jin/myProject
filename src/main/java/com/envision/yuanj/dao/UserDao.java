@@ -17,5 +17,5 @@ public interface UserDao extends JpaRepository<User, Long> {
      * @param userName
      * @return
      */
-    Optional<User> findTopByUserNameAndStatus(String userName,Integer status);
+    Optional<User> findTopByUserNameAndPassWord(String userName,String passWord);
 }

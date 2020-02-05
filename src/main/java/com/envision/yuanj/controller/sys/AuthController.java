@@ -1,5 +1,7 @@
 package com.envision.yuanj.controller.sys;
 
+import com.alibaba.fastjson.JSONObject;
+import com.envision.yuanj.entity.User;
 import com.envision.yuanj.service.sys.UserService;
 import org.apache.shiro.SecurityUtils;
 import org.apache.shiro.authc.IncorrectCredentialsException;
@@ -12,7 +14,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping("/auth")
@@ -30,22 +32,29 @@ public class AuthController {
         }
     }
 
+    @ResponseBody
     @RequestMapping("signIn")
-    public String login(@RequestParam String userName,@RequestParam String passWord,Model model) {
+    public String login(@RequestParam String userName,@RequestParam String passWord) {
+        System.out.println("hisksssssssssssssssssssssssssssssssssssss");
+        JSONObject returnJson=new JSONObject();
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(userName, passWord);
         try {
             subject.login(token);
+            User user=(User)subject.getPrincipal();
+            returnJson.put("username",user);
+            returnJson.put("auth","auth");
         } catch (UnknownAccountException e) {
             e.printStackTrace();
-            model.addAttribute("userName", "用户名错误！");
-            return "login";
+            returnJson.put("msg","用户名或密码错误！");
+            returnJson.put("code",1);
+            returnJson.put("data",new JSONObject());
         } catch (IncorrectCredentialsException e) {
-            e.printStackTrace();
-            model.addAttribute("passwd", "密码错误");
-            return "login";
+            returnJson.put("msg","密码错误！");
+            returnJson.put("code",1);
+            returnJson.put("data",new JSONObject());
         }
-        return "home";
+        return returnJson.toJSONString();
     }
 
 

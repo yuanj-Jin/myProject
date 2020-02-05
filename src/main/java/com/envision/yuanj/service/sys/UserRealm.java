@@ -13,16 +13,29 @@ public class UserRealm extends AuthorizingRealm {
     @Autowired
     UserService userService;
 
+    /**
+     * 用户权限认证
+     * @param principal
+     * @return
+     */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principal) {
         Object obj = principal.getPrimaryPrincipal();
         return null;
     }
 
+    /**
+     * 用户身份认证
+     * @param authenticationToken
+     * @return
+     * @throws AuthenticationException
+     */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken authenticationToken) throws AuthenticationException {
         UsernamePasswordToken userToken = (UsernamePasswordToken) authenticationToken;
-        User authUser = userService.authticationUser(userToken.getUsername());
+        char[] pwd=userToken.getPassword();
+        String passWord=String.valueOf(pwd);
+        User authUser = userService.authticationUser(userToken.getUsername(),passWord);
         if (authUser != null) {
             return new SimpleAuthenticationInfo(authUser, userToken.getCredentials(), userToken.getUsername());
         } else {
