@@ -9,7 +9,6 @@ public class VueTestController {
 
     @RequestMapping("/")
     public String goVueIndex(){
-
         return "index";
     }
 

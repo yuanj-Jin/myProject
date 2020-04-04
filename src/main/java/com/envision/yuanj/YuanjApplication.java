@@ -1,6 +1,7 @@
 package com.envision.yuanj;
 
 import com.envision.yuanj.service.sys.UserRealm;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
 import org.springframework.boot.SpringApplication;
@@ -24,7 +25,6 @@ public class YuanjApplication {
         return new ServerEndpointExporter();
     }
 
-
     @Bean
     public ShiroFilterFactoryBean getShiroFilterFactoryBean(DefaultWebSecurityManager defaultWebSecurityManager) {
         ShiroFilterFactoryBean shiroFilterFactoryBean = new ShiroFilterFactoryBean();
@@ -36,11 +36,7 @@ public class YuanjApplication {
         fMap.put("/**", "authc");
 
         // 开发阶段全部放行
-         fMap.put("/**", "anon");
-        fMap.put("/login/**", "anon");
-        fMap.put("/elk/agent/regist", "anon");
-        fMap.put("/elk/cpu/remote", "anon");
-        fMap.put("/elk/disk/remote", "anon");
+        fMap.put("/**", "anon");
 
         // 静态资源
         fMap.put("/static/**", "anon");
@@ -61,13 +57,17 @@ public class YuanjApplication {
         shiroFilterFactoryBean.setUnauthorizedUrl("/autherror");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(fMap);
         return shiroFilterFactoryBean;
-
     }
 
+    //Shiro：1、构建SecurityManager环境
     @Bean
     public DefaultWebSecurityManager defaultWebSecurityManager(UserRealm userRealm) {
         DefaultWebSecurityManager defaultWebSecurityManager = new DefaultWebSecurityManager();
         defaultWebSecurityManager.setRealm(userRealm);
+        //shiro加密
+        HashedCredentialsMatcher matcher=new HashedCredentialsMatcher();
+        matcher.setHashAlgorithmName("md5");
+        matcher.setHashIterations(1);
         return defaultWebSecurityManager;
     }
 }

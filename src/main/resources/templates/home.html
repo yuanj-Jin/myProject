@@ -9,10 +9,29 @@
 </head>
 <body>
 Welcome
-<input th:value="#{userName}">
+<input th:value="#{userName}" id="una">
 <input th:value="#{passwd}">
 </body>
 </html>
 <script type="application/javascript">
+        $("#una").setAttribute("");
+        $("#una").removeAttribute();
+        $("#una").css("color:red;");
+        $("#una").click(function () {
+
+        })
+
+    $.ajax({
+        url:"/ww/a",
+        data:[],
+        dataType:json,
+        type:post,
+        success:function () {
+            
+        },
+        error:function () {
+            
+        }
+    })
 
 </script>

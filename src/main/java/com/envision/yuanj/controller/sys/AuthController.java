@@ -35,7 +35,6 @@ public class AuthController {
     @ResponseBody
     @RequestMapping("signIn")
     public String login(@RequestParam String userName,@RequestParam String passWord) {
-        System.out.println("hisksssssssssssssssssssssssssssssssssssss");
         JSONObject returnJson=new JSONObject();
         Subject subject = SecurityUtils.getSubject();
         UsernamePasswordToken token = new UsernamePasswordToken(userName, passWord);
